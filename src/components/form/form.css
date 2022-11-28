@@ -1,0 +1,98 @@
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-container{
+    display:flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    
+}
+
+div .form h2{
+    width: 100%;
+    color: #fff;
+    font-size: 1.9em;
+    margin-bottom: 2em;
+}
+.form{
+    width: 100%;
+    max-width: 500px;
+    padding: 1.5em 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.form input,
+.form textarea{
+    width: 95%;
+    margin: 0.5em 0em;
+    border: none;
+    outline: none;
+    padding: 1em 0em;
+    resize: none;
+    border-bottom:1px solid #fff;
+    background-color: transparent;
+}
+
+.form .button-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    background-color: #fff;
+    margin-top: 2em;
+    padding: 0;
+}
+
+.form .button-container input[type="submit"]{
+    color: #242424;
+    padding: 0.3em 0.7em;
+    font-size: 1em;
+}
+
+.form .button-container svg{
+    font-size: 1.7em;
+    color: #242424;
+    position: relative;
+    top: -0.5px;
+    left: -7px;
+}
+
+.form .button-effect{
+    border: none;
+    width: auto;
+    border: 1px solid #fff !important;
+    background-color: #242424 !important;
+    padding: 0;
+    padding: 0.7em 1em;
+    font-size: 1em;
+    position: relative;
+    z-index: -1;
+    left: -9.05em;
+    top: 0.3em;
+}
+
+.form .icon{
+    border: 1px solid #fff;
+    border-radius: 50%;
+    font-size: 2em;
+    padding: 0.2em;
+    position: relative;
+    top: 1.25em;
+}

@@ -1,0 +1,12 @@
+h2{
+    width: 100%;
+    color: #fff;
+    font-size: 1.9em;
+    margin-bottom: 2em; 
+    line-height: 45px;
+}
+
+label{
+    border-bottom: 1px solid #fff;
+    font-size: 1.2em;
+}
