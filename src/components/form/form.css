@@ -96,3 +96,15 @@ div .form h2{
     position: relative;
     top: 1.25em;
 }
+
+.form .error{
+    color: #ff0000;
+    width: 95%;
+    margin: 0;
+    font-size: 0.775em;
+    text-align: left;
+}
+
+.form .valid{
+    border-color: #00a650;
+}
