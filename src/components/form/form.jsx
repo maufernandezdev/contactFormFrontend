@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './form.css';
 import { BsArrowRightShort } from 'react-icons/bs';
 import useForm from '../../hooks/useForm';
+import sendForm from '../../utils/sendForm';
 
 const form = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const form = () => {
   const initialForm = {
     name:'',
     email:'',
-    comments:'',
+    message:'',
   };
 
 
@@ -54,12 +55,12 @@ const form = () => {
         setEmailValid('valid');
       }
     
-      if (!formValues.comments.trim())
+      if (!formValues.message.trim())
       { 
         setCommentsValid('');
         errors.comments = "The comment is required";
         
-      } else if (!regexComments.test(formValues.comments.trim()))
+      } else if (!regexComments.test(formValues.message.trim()))
       {
         setCommentsValid('');
         errors.comments = "The comment exceeds 255 characters.";
@@ -73,17 +74,28 @@ const form = () => {
   }
   const [formValues, handleInputChange , handleBlur , errors ] = useForm(initialForm, validationsForm);
 
-  const handleSubmit = (e) =>
+  const handleSubmit = async (e) =>
   {   
       e.preventDefault();
       handleInputChange(e);
-      console.log(Object.keys(errors));
       if (Object.keys(errors).length === 0)
       {
-        setButtonValue('Sending ...')
-        setTimeout(() => {
-          navigate('/success');
-        }, 5000);
+        setButtonValue('Sending ...');
+        console.log('form: ', formValues);
+        const data = await sendForm(formValues);
+        console.log('data in jsx: ', data);
+        if(data.result === 'send')
+        {
+          setTimeout(() => {
+            navigate('/success');
+          }, 1000);
+        }
+        else
+        {
+          setTimeout(() => {
+            navigate('/failed');
+          }, 1000);
+        }
       }
   }
 
@@ -95,7 +107,7 @@ const form = () => {
           {errors.name && <p className='error'>{errors.name}</p>}
           <input type='email' className={emailValid} placeholder='Your email'   name='email' onBlur={handleBlur} onChange={e => handleInputChange(e)} value={formValues.email || ''}/>
           {errors.email && <p className='error'>{errors.email}</p>}
-          <textarea name='comments' className={commentsValid} cols='30' rows='10' placeholder='How can we help you?' onBlur={handleBlur} onChange={e => handleInputChange(e)} value={formValues.comments || ''}></textarea>
+          <textarea name='message' className={commentsValid} cols='30' rows='10' placeholder='How can we help you?' onBlur={handleBlur} onChange={e => handleInputChange(e)} value={formValues.message || ''}></textarea>
           {errors.comments && <p className='error'>{errors.comments}</p>}
           <div className='button-container'>
             <input type="submit"  value={buttonValue}/>
