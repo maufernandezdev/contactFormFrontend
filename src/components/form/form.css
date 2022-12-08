@@ -48,6 +48,7 @@ div .form h2{
     resize: none;
     border-bottom:1px solid #fff;
     background-color: transparent;
+    color: #fff;
 }
 
 .form .button-container{
